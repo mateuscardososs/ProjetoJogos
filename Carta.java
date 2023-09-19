@@ -18,10 +18,18 @@ public class Carta {
         this.defesa = defesa;
         this.custo = custo;
         this.habilidade = habilidade;
-        this.quantidade = quantidade;
+        
+        if (tipo.equalsIgnoreCase("Mana")) {
+            this.quantidade = quantidade;
+        } else {
+            if (quantidade <= 3) {
+                this.quantidade = quantidade;
+            } else {
+                this.quantidade = 3;
+            }
+        }
     }
 
-    /////////////////////////
     public String getNome() {
         return nome;
     }
