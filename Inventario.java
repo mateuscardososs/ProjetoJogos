@@ -33,7 +33,20 @@ public class Inventario {
         this.cardcoins = cardcoins;
     }
 
-    public void adicionarCarta(Carta carta) {
-        
+    public void adicionarCarta(Carta carta) {
+        // Verifica se o inventário já está cheio
+        if (cartas.length >= 200) {
+            System.out.println("O inventário está cheio. Não é possível adicionar mais cartas.");
+            return;
+        }
+        for (int i = 0; i < cartas.length; i++) {
+            if (cartas[i] == null) {
+                cartas[i] = carta;
+                System.out.println("Carta adicionada ao inventário: " + carta.getNome());
+                return;
+            }
+        }
+
+        System.out.println("O inventário está cheio.");
     }
 }
