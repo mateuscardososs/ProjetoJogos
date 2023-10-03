@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class Deck {
     private String nome;
     private Stack<Carta> cartas;  
@@ -15,7 +18,7 @@ class Deck {
             return;
         }
 
-        if (cartas.size() >= 60) {
+        if (caras.size() >= 60) {
             System.out.println("O deck já possui o número máximo de cartas (60).");
             return;
         }
@@ -57,5 +60,5 @@ class Deck {
 
     public boolean isDisponivel() {
         return disponibilidade;
-    }
+}
 }

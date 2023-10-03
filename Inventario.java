@@ -49,4 +49,7 @@ public class Inventario {
 
         System.out.println("O inventário está cheio.");
     }
+
+    public void removerCarta(Carta carta) {
+    }
 }
