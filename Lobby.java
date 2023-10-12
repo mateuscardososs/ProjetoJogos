@@ -70,49 +70,47 @@ public class Lobby {
             System.out.println("Não há jogadores suficientes para iniciar uma partida em dupla.");
             return;
         }
-        
+    
         Random rand = new Random();
-        Usuario[] team1 = selecionarJogadoresAleatorios(2);
-        Usuario[] team2 = selecionarJogadoresAleatorios(2);
-        
-        Deck modoDeJogoDupla;
-        Arena arenaDupla = criarArenaDupla(team1, team2, modoDeJogoDupla);
-        
+        Usuario[] team1 = selecionarJogadoresAleatorios(2, rand);
+        Usuario[] team2 = selecionarJogadoresAleatorios(2, rand);
+    
+        Deck modoDeJogoDupla = new Deck(null);
+    
+        Arena arenaDupla = new Arena(team1, team2, modoDeJogoDupla, modoDeJogoDupla);
+    
         arenaDupla.iniciarPartidaDupla();
+    
+        for (Usuario player : team1) {
+            removerJogador(player);
+        }
         
-        removerJogadores(team1);
-        removerJogadores(team2);
+        for (Usuario player : team2) {
+            removerJogador(player);
+        }
     }
     
-    private Usuario[] selecionarJogadoresAleatorios(int quantidade) {
-        Random rand = new Random();
-        Usuario[] selectedPlayers = new Usuario[quantidade];
-        for (int i = 0; i < quantidade; i++) {
+    public Usuario[] selecionarJogadoresAleatorios(int count, Random rand) {
+        Usuario[] selectedPlayers = new Usuario[count];
+    
+        for (int i = 0; i < count; i++) {
             int selectedIndex;
             do {
                 selectedIndex = rand.nextInt(numPlayers);
-            } while (contains(selectedPlayers, selectedIndex));
+            } while (contemJogadorSelecionado(selectedPlayers, selectedIndex));
+    
             selectedPlayers[i] = players[selectedIndex];
         }
+    
         return selectedPlayers;
     }
     
-    private Arena criarArenaDupla(Usuario[] team1, Usuario[] team2, Deck modoDeJogo) {
-        return new Arena(team1, team2, modoDeJogo, modoDeJogo);
-    }
-    
-    private void removerJogadores(Usuario[] jogadores) {
-        for (Usuario jogador : jogadores) {
-            removerJogador(jogador);
-        }
-    }
-    
-    private boolean contains(Usuario[] array, int value) {
-        for (Usuario item : array) {
-            if (item == players[value]) {
+    public boolean contemJogadorSelecionado(Usuario[] selectedPlayers, int index) {
+        for (Usuario player : selectedPlayers) {
+            if (player != null && player.getIndex() == index) {
                 return true;
             }
         }
         return false;
     }
-}    
+    
