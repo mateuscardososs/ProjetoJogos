@@ -8,15 +8,21 @@ public class Arena {
     private int pontosVidaPlayer1;
     private int pontosVidaPlayer2;
 
-    public Arena(Usuario jogador1, Usuario jogador2, Deck deckJogador1, Deck deckJogador2) {
-        this.Player1 = jogador1;
-        this.Player2 = jogador2;
+    public Arena(Usuario[] team1, Usuario[] team2, Deck deckJogador1, Deck deckJogador2) {
+        this.Player1 = team1;
+        this.Player2 = team2;
         this.deckPlayer1 = deckJogador1;
         this.deckPlayer2 = deckJogador2;
         this.campoPlayer1 = new Carta[2][5];
         this.campoPlayer2 = new Carta[2][5];
         this.pontosVidaPlayer1 = 20;
         this.pontosVidaPlayer2 = 20;
+    }
+
+    public Arena(Usuario[] team1, Usuario[] team2, Deck modoDeJogo) {
+    }
+
+    public Arena(Usuario jogador, Usuario adversario, Deck modoDeJogo) {
     }
 
     public Usuario getPlayer1(){
@@ -73,5 +79,11 @@ public class Arena {
 
     public int getPontosVidaPlayer2(){
         return pontosVidaPlayer2;
+    }
+
+    public void iniciarPartida() {
+    }
+
+    public void iniciarPartidaDupla() {
     }
    }
