@@ -69,4 +69,7 @@ class Deck {
     public Carta getCarta(int randomIndex) {
         return null;
     }
+
+    public void removerCarta(int randomIndex) {
+    }
 }

@@ -33,6 +33,9 @@ public class Arena {
         this.cemiterioPlayer2 = new Carta[100];
     }
 
+    public Arena(Usuario[] usuarios, Usuario[] usuarios2, Deck modoDeJogo) {
+    }
+
     public void saque(Usuario player, int quantidade) {
         Random rand = new Random();
         for (int i = 0; i < quantidade; i++) {
@@ -96,7 +99,7 @@ public class Arena {
         
     
 
-    private void ataque(Carta[] vetorAtacante, Carta[] vetorDefensor) {
+    protected void ataque(Carta[] vetorAtacante, Carta[] vetorDefensor) {
         for (int i = 0; i < vetorAtacante.length; i++) {
             if (vetorAtacante[i] != null && vetorDefensor[i] != null) {
                 int danoAtacante = vetorAtacante[i].getDano();
@@ -122,7 +125,7 @@ public class Arena {
         return 0;
     }
 
-    private void declararVencedor(Usuario segundoJogador) {
+    protected void declararVencedor(Usuario segundoJogador) {
         Usuario vencedor;
         Usuario perdedor;
     
@@ -143,7 +146,7 @@ public class Arena {
         System.out.println("O jogador " + vencedor.getNome() + " venceu a partida!");
     }
     
-    private boolean verificarFimPartida() {
+    protected boolean verificarFimPartida() {
         return pontosVidaPlayer1 < 1 || pontosVidaPlayer2 < 1;
    
     }
