@@ -61,4 +61,12 @@ class Deck {
     public boolean isDisponivel() {
         return disponibilidade;
 }
+
+    public int getTamanho() {
+        return 0;
+    }
+
+    public Carta getCarta(int randomIndex) {
+        return null;
+    }
 }

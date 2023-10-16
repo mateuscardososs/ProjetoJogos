@@ -113,4 +113,46 @@ public class Usuario {
                 ", pontos=" + pontos +
                 '}'';
     }
+
+    public void adicionarCartaMao(Carta carta) {
+    }
+
+    public void aumentarManaMaxima(int i) {
+    }
+
+    public void resetMana() {
+    }
+
+    public boolean temMana() {
+        return false;
+    }
+
+    public Carta jogarCartaMana() {
+        return null;
+    }
+
+    public int escolherPosicaoCampo() {
+        return 0;
+    }
+
+    public void diminuirMana(Object custoMana) {
+    }
+
+    public void posicionarCartaCampo(Carta cartaMana, int posicaoCampo) {
+    }
+
+    public Carta escolherCartaMao() {
+        return null;
+    }
+
+    public Carta[] getCampo() {
+        return null;
+    }
+
+    public void adicionarCardCoins(int cardCoinsVencedor) {
+    }
+
+    public String getNome() {
+        return null;
+    }
 }

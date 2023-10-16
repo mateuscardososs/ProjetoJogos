@@ -28,6 +28,18 @@ public class Carta {
                 this.quantidade = 3;
             }
         }
+
+        public void jogarCartaMana() {
+            for (int i = 0; i < mao.length; i++) {
+                if (mao[i] != null && mao[i].getTipo() == TipoCarta.MANA) {
+                    Carta cartaMana = mao[i];
+                    mao[i] = null; 
+                    return cartaMana; 
+                }
+            }
+            return null;
+        }
+        
     }
 
     public String getNome() {
@@ -101,6 +113,21 @@ public class Carta {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public Object getCustoMana() {
+        return null;
+    }
+
+    public int getDano() {
+        return 0;
+    }
+
+    public void sofrerDano(int danoDefensor) {
+    }
+
+    public int getPontosVida() {
+        return 0;
     }
 
 }
