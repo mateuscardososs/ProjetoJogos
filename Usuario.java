@@ -10,7 +10,7 @@ public class Usuario {
     private int nivel = 1;
     private String[] decks = new String[5];
     private double pontos = 0;
-
+}
     public Usuario(String nick, String cpf, String senha, int idade, String sexo, String email) {
         this.nick = nick;
         this.cpf = cpf;
