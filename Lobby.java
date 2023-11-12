@@ -4,7 +4,7 @@ public class Lobby {
     private Usuario[] players;
     private int numPlayers;
     private int maxPlayers;
-
+}
     public Lobby(int maxJogadores) {
         maxPlayers = maxJogadores;
         players = new Usuario[maxPlayers];
@@ -70,21 +70,21 @@ public class Lobby {
             System.out.println("Não há jogadores suficientes para iniciar uma partida em dupla.");
             return;
         }
-    
+
         Random rand = new Random();
         Usuario[] team1 = selecionarJogadoresAleatorios(2, rand);
         Usuario[] team2 = selecionarJogadoresAleatorios(2, rand);
-    
+
         Deck modoDeJogoDupla = new Deck(null);
-    
+
         Arena arenaDupla = new Arena(team1, team2, modoDeJogoDupla, modoDeJogoDupla);
-    
+
         arenaDupla.iniciarPartidaDupla();
-    
+
         for (Usuario player : team1) {
             removerJogador(player);
         }
-        
+
         for (Usuario player : team2) {
             removerJogador(player);
         }
