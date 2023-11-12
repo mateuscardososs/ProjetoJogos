@@ -130,4 +130,7 @@ public class Carta {
         return 0;
     }
 
+    public void sofrerDano(int danoAtacante) {
+    }
+
 }

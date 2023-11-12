@@ -13,6 +13,17 @@ class Carta implements Ativacoes {
     public void ativarHabilidade() {
         System.out.println("Ativando habilidade da carta: " + (habilidade != null ? habilidade : "Esta carta não possui habilidade."));
     }
+
+    public Object getCustoMana() {
+        return null;
+    }
+
+    public int getDano() {
+        return 0;
+    }
+
+    public void sofrerDano(int danoDefensor) {
+    }
 }
 
 class CartaUnique implements Ativacoes {
