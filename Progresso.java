@@ -1,9 +1,9 @@
 public abstract class Progresso {
-    protected Premiacao[] premiacoes; // Vetor de premiações
-    protected int premiacaoAtual; // Premiação atual
+    protected Premiacao[] premiacoes; 
+    protected int premiacaoAtual; 
 
     public Progresso() {
-        this.premiacoes = new Premiacao[60]; // Inicializando o vetor de premiações com 60 posições
+        this.premiacoes = new Premiacao[60]; 
         this.premiacaoAtual = 0; // Inicializando a premiação atual
     }
 
@@ -23,6 +23,8 @@ class Premiacao {
         return nome;
     }
 }
+
+//fazer o passe de batalha em outro arquivo de classe
 
 class PasseDeBatalha extends Progresso {
     public PasseDeBatalha() {
@@ -54,10 +56,4 @@ class PasseDeBatalha extends Progresso {
     }
 }
 
-public class Main {
-    public static void main(String[] args) {
-        PasseDeBatalha passe = new PasseDeBatalha();
-        passe.progresso();
-        passe.bonusPasse();
-    }
-}
+

@@ -124,6 +124,7 @@ public class Carta {
     }
 
     public void sofrerDano(int danoDefensor) {
+        return null;
     }
 
     public int getPontosVida() {
@@ -131,6 +132,7 @@ public class Carta {
     }
 
     public void sofrerDano(int danoAtacante) {
+        return null;
     }
 
 }

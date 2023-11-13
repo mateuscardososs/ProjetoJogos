@@ -76,7 +76,7 @@ public class ArenaDupla extends Arena {
         Carta[] vetorAtacante = jogador.getCampo();
         Carta[] vetorDefensor = (jogador == getTeam1()[0] || jogador == getTeam1()[1]) ? getTeam2()[0].getCampo() : getTeam1()[0].getCampo();
 
-        ataque(vetorAtacante, vetorDefensor);
+        super.ataque(vetorAtacante, vetorDefensor);
 
         Carta[] vetorAtacanteAliado = new Carta[vetorAtacante.length + vetorAliado.length];
         System.arraycopy(vetorAtacante, 0, vetorAtacanteAliado, 0, vetorAtacante.length);

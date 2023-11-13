@@ -79,7 +79,7 @@ public class Lobby {
 
         Arena arenaDupla = new Arena(team1, team2, modoDeJogoDupla, modoDeJogoDupla);
 
-        arenaDupla.iniciarPartidaDupla();
+        arenaDupla.iniciarPartida();
 
         for (Usuario player : team1) {
             removerJogador(player);
@@ -113,4 +113,5 @@ public class Lobby {
         }
         return false;
     }
+
     

@@ -14,7 +14,6 @@ class Carta implements Ativacoes {
         System.out.println("Ativando habilidade da carta: " + (habilidade != null ? habilidade : "Esta carta não possui habilidade."));
     }
 
-    // Restante do código da classe Carta...
 
 }
 

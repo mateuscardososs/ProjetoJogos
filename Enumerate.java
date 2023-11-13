@@ -33,7 +33,6 @@ public class Enumerate{
                 }
             }
             
-            // Default to common if for some reason no rarity was selected
             return COMUM;
         }
     }
