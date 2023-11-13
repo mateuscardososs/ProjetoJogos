@@ -155,4 +155,12 @@ public class Usuario {
     public String getNome() {
         return null;
     }
+
+    public String getMana() {
+        return null;
+    }
+
+    public int getPontosVida() {
+        return 0;
+    }
 }

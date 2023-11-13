@@ -10,89 +10,100 @@ public class ArenaDupla extends Arena {
 
     @Override
     public void iniciarPartida() {
-    System.out.println("Iniciando partida em dupla");
-    Random rand = new Random();
-    int randomPlayer = rand.nextInt(4); 
-    Usuario jogadorAtual = (randomPlayer < 2) ? getTeam1()[randomPlayer] : getTeam2()[randomPlayer - 2];
+        System.out.println("Iniciando partida em dupla");
+        Random rand = new Random();
+        int randomPlayer = rand.nextInt(4);
+        Usuario jogadorAtual = (randomPlayer < 2) ? getTeam1()[randomPlayer] : getTeam2()[randomPlayer - 2];
 
-    while (true) {
-        turno(jogadorAtual);
+        while (true) {
+            turno(jogadorAtual);
 
-        if (verificarFimPartida()) {
-            declararVencedor(jogadorAtual);
-            break;
+            if (verificarFimPartida()) {
+                declararVencedor(jogadorAtual);
+                break;
+            }
+
+            // Mude para o próximo jogador
+            randomPlayer = (randomPlayer + 1) % 4;
+            jogadorAtual = (randomPlayer < 2) ? getTeam1()[randomPlayer] : getTeam2()[randomPlayer - 2];
         }
-
-        // Mude para o próximo jogador
-        randomPlayer = (randomPlayer + 1) % 4;
-        jogadorAtual = (randomPlayer < 2) ? getTeam1()[randomPlayer] : getTeam2()[randomPlayer - 2];
     }
-}
 
     @Override
     public void saque() {
-    System.out.println("Realizando o saque em dupla...");
+        System.out.println("Realizando o saque em dupla...");
 
-    // Suponha que você deseja sortear 7 cartas aleatórias para cada jogador, incluindo o aliado.
-    saque(getTeam1(), 7);
-    saque(getTeam2(), 7);
-    saque(aliado, 7);
-}
+        saque(getTeam1(), 7);
+        saque(getTeam2(), 7);
+        saque(aliado, 7);
+    }
 
-private void saque(Usuario[] jogadores, int quantidade) {
-    Random rand = new Random();
+    private void saque(Usuario[] jogadores, int quantidade) {
+        Random rand = new Random();
 
-    for (Usuario jogador : jogadores) {
-        for (int i = 0; i < quantidade; i++) {
-            int deckSize = jogador.getDeck().getTamanho();
-            if (deckSize > 0) {
-                int randomIndex = rand.nextInt(deckSize);
-                Carta carta = jogador.getDeck().getCarta(randomIndex);
-                jogador.adicionarCartaMao(carta);
-                jogador.getDeck().removerCarta(randomIndex);
+        for (Usuario jogador : jogadores) {
+            for (int i = 0; i < quantidade; i++) {
+                int deckSize = jogador.getDeck().getTamanho();
+                if (deckSize > 0) {
+                    int randomIndex = rand.nextInt(deckSize);
+                    Carta carta = jogador.getDeck().getCarta(randomIndex);
+                    jogador.adicionarCartaMao(carta);
+                    jogador.getDeck().removerCarta(randomIndex);
+                }
             }
         }
     }
-}
 
-
+    // Sobrecarga do método turno
     public void turno(Usuario jogador, Carta[] vetorAliado) {
-    System.out.println("Turno do jogador " + jogador.getNome());
+        System.out.println("Turno do jogador " + jogador.getNome());
 
-    saque(jogador, 1);
-    jogador.aumentarManaMaxima(1);
-    jogador.resetMana();
+        saque(jogador, 1);
+        jogador.aumentarManaMaxima(1);
+        jogador.resetMana();
 
-    if (jogador.temMana()) {
-        Carta cartaMana = jogador.jogarCartaMana();
-        jogador.diminuirMana(cartaMana.getCustoMana());
-        int posicaoCampo = jogador.escolherPosicaoCampo();
-        jogador.posicionarCartaCampo(cartaMana, posicaoCampo);
-    } else {
-        Carta cartaCampo = jogador.escolherCartaMao();
-        int posicaoCampo = jogador.escolherPosicaoCampo();
-        jogador.posicionarCartaCampo(cartaCampo, posicaoCampo);
+        if (jogador.temMana()) {
+            Carta cartaMana = jogador.jogarCartaMana();
+            jogador.diminuirMana(cartaMana.getCustoMana());
+            int posicaoCampo = jogador.escolherPosicaoCampo();
+            jogador.posicionarCartaCampo(cartaMana, posicaoCampo);
+        } else {
+            Carta cartaCampo = jogador.escolherCartaMao();
+            int posicaoCampo = jogador.escolherPosicaoCampo();
+            jogador.posicionarCartaCampo(cartaCampo, posicaoCampo);
+        }
+
+        Carta[] vetorAtacante = jogador.getCampo();
+        Carta[] vetorDefensor = (jogador == getTeam1()[0] || jogador == getTeam1()[1]) ? getTeam2()[0].getCampo() : getTeam1()[0].getCampo();
+
+        ataque(vetorAtacante, vetorDefensor);
+
+        Carta[] vetorAtacanteAliado = new Carta[vetorAtacante.length + vetorAliado.length];
+        System.arraycopy(vetorAtacante, 0, vetorAtacanteAliado, 0, vetorAtacante.length);
+        System.arraycopy(vetorAliado, 0, vetorAtacanteAliado, vetorAtacante.length, vetorAliado.length);
+
+        Carta[] vetorDefensorInimigo = (jogador == getTeam1()[0] || jogador == getTeam1()[1]) ? getTeam2()[1].getCampo() : getTeam1()[1].getCampo();
+
+        ataque(vetorAtacanteAliado, vetorDefensorInimigo);
     }
 
-    Carta[] vetorAtacante = jogador.getCampo();
-    Carta[] vetorDefensor = (jogador == getTeam1()[0] || jogador == getTeam1()[1]) ? getTeam2()[0].getCampo() : getTeam1()[0].getCampo();
+    private Usuario[] getTeam1() {
+        Usuario[] equipe1 = new Usuario[2]; 
 
-    ataque(vetorAtacante, vetorDefensor);
+        // Exemplo de preenchimento fictício
+        equipe1[0] = new Usuario("Jogador1", null, null, manaMaximaPlayer1, null, null);
+        equipe1[1] = new Usuario("Jogador2", null, null, manaMaximaPlayer1, null, null);
 
-    Carta[] vetorAtacanteAliado = vetorAliado;
-    Carta[] vetorDefensorInimigo = (jogador == getTeam1()[0] || jogador == getTeam1()[1]) ? getTeam2()[1].getCampo() : getTeam1()[1].getCampo();
+        return equipe1;
+    }
 
-    ataque(vetorAtacanteAliado, vetorDefensorInimigo);
-}
+    private Usuario[] getTeam2() {
+        Usuario[] equipe2 = new Usuario[2]; 
 
+        equipe2[0] = new Usuario("Jogador3", null, null, manaMaximaPlayer1, null, null);
+        equipe2[1] = new Usuario("Jogador4", null, null, manaMaximaPlayer1, null, null);
 
-
-private Usuario[] getTeam2() {
-    return null;
-}
-
-private Usuario[] getTeam1() {
-    return null;
-}
+        return equipe2;
+    }
 
 }

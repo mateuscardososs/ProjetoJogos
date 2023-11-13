@@ -1,4 +1,4 @@
-public interface Main {
+public interface Ativacoes {
     void ativarHabilidade();
 }
 
@@ -14,16 +14,8 @@ class Carta implements Ativacoes {
         System.out.println("Ativando habilidade da carta: " + (habilidade != null ? habilidade : "Esta carta não possui habilidade."));
     }
 
-    public Object getCustoMana() {
-        return null;
-    }
+    // Restante do código da classe Carta...
 
-    public int getDano() {
-        return 0;
-    }
-
-    public void sofrerDano(int danoDefensor) {
-    }
 }
 
 class CartaUnique implements Ativacoes {
@@ -40,9 +32,9 @@ class CartaUnique implements Ativacoes {
         System.out.println("Ativando primeira habilidade da carta unique: " + habilidade1);
         System.out.println("Ativando segunda habilidade da carta unique: " + habilidade2);
     }
+
 }
 
-// Exemplo
 public class Main {
     public static void main(String[] args) {
         Carta cartaNormal = new Carta("Infligir Dano");
