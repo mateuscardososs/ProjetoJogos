@@ -1,5 +1,14 @@
-public class Enumerate{
-    public enum raridadedascartas{
+public class Enumerate {
+    public enum HabilidadeCarta {
+        AMEDRONTAR,
+        ATROPELAR,
+        UNIR,
+        VOAR,
+        INVISIBILIDADE,
+        LANCAR_FEITICO
+    }
+
+    public enum RaridadeDasCartas {
         COMUM("Comum", 0.80),
         INCOMUM("Incomum", 0.15),
         RARA("Rara", 0.04),
@@ -8,31 +17,31 @@ public class Enumerate{
 
         private final String name;
         private final double dropProbability;
-    
-        private raridadedascartas(String name, double dropProbability) {
+
+        private RaridadeDasCartas(String name, double dropProbability) {
             this.name = name;
             this.dropProbability = dropProbability;
         }
-    
+
         public String getName() {
             return name;
         }
-    
+
         public double getDropProbability() {
             return dropProbability;
         }
-    
-        public static raridadedascartas getRandomRarity() {
+
+        public static RaridadeDasCartas getRandomRarity() {
             double randomValue = Math.random();
             double cumulativeProbability = 0.0;
-            
-            for (raridadedascartas rarity : raridadedascartas.values()) {
+
+            for (RaridadeDasCartas rarity : RaridadeDasCartas.values()) {
                 cumulativeProbability += rarity.getDropProbability();
                 if (randomValue <= cumulativeProbability) {
                     return rarity;
                 }
             }
-            
+
             return COMUM;
         }
     }
