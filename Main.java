@@ -14,6 +14,25 @@ class Carta implements Ativacoes {
         System.out.println("Ativando habilidade da carta: " + (habilidade != null ? habilidade : "Esta carta não possui habilidade."));
     }
 
+    public String getNome() {
+        return null;
+    }
+
+    public Object getCustoMana() {
+        return null;
+    }
+
+    public int getDano() {
+        return 0;
+    }
+
+    public void sofrerDano(int danoAtacante) {
+    }
+
+    public int getPontosVida() {
+        return 0;
+    }
+
 
 }
 
