@@ -4,7 +4,7 @@ public class Lobby {
     private Usuario[] players;
     private int numPlayers;
     private int maxPlayers;
-}
+
     public Lobby(int maxJogadores) {
         maxPlayers = maxJogadores;
         players = new Usuario[maxPlayers];
@@ -112,6 +112,7 @@ public class Lobby {
             }
         }
         return false;
+    }
     }
 
     

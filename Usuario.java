@@ -167,4 +167,8 @@ public class Usuario {
     public String getManaMaxima() {
         return null;
     }
+
+    public int getIndex() {
+        return 0;
+    }
 }

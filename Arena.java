@@ -36,6 +36,9 @@ public class Arena {
         this.scanner = new Scanner(System.in);
     }
 
+    public Arena(Usuario jogador, Usuario adversario, Deck modoDeJogo) {
+    }
+
     public void saque(Usuario player, int quantidade) {
         Random rand = new Random();
         for (int i = 0; i < quantidade; i++) {

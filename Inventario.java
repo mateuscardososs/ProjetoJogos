@@ -52,4 +52,8 @@ public class Inventario {
 
     public void removerCarta(Carta carta) {
     }
+
+    public int contagemCarta(Carta cartaAleatoria) {
+        return 0;
+    }
 }
