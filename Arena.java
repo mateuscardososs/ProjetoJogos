@@ -161,11 +161,11 @@ public class Arena {
         }
     }
 
-    public void ataque(Carta[] vetorAtacante2, Carta[] vetorDefensor2) {
-        System.out.println("Turno de " + vetorAtacante2.length + " - Ataque:");
+    public void ataque(Carta[] vetorAtacanteAliado, Carta[] vetorDefensorInimigo) {
+        System.out.println("Turno de " + vetorAtacanteAliado.length + " - Ataque:");
 
-        Carta[] vetorAtacante = vetorAtacante2.getCampo();
-        Carta[] vetorDefensor = vetorDefensor2.getCampo();
+        Carta[] vetorAtacante = vetorAtacanteAliado.getCampo();
+        Carta[] vetorDefensor = vetorDefensorInimigo.getCampo();
 
         if (vetorAtacante != null && vetorAtacante.length > 0) {
             System.out.println("Você tem cartas no campo. Deseja atacar?");
@@ -178,7 +178,7 @@ public class Arena {
                 case 1:
                     for (int i = 0; i < vetorAtacante.length; i++) {
                         if (vetorAtacante[i] != null) {
-                            int posicaoDefensor = vetorDefensor2.escolherPosicaoCampo(); 
+                            int posicaoDefensor = vetorDefensorInimigo.escolherPosicaoCampo(); 
 
                             if (posicaoDefensor >= 0 && posicaoDefensor < vetorDefensor.length && vetorDefensor[posicaoDefensor] != null) {
                                 // Realiza o ataque
@@ -189,12 +189,12 @@ public class Arena {
                                 vetorAtacante[i].sofrerDano(danoDefensor);
 
                                 if (vetorAtacante[i].getPontosVida() < 1) {
-                                    cemiterioPlayerAtacante[getProximaPosicaoCemiterio(vetorAtacante2)] = vetorAtacante[i];
+                                    cemiterioPlayer1[getProximaPosicaoCemiterio(vetorAtacanteAliado)] = vetorAtacante[i];
                                     vetorAtacante[i] = null;
                                 }
 
                                 if (vetorDefensor[posicaoDefensor].getPontosVida() < 1) {
-                                    cemiterioPlayerDefensor[getProximaPosicaoCemiterio(vetorDefensor2)] = vetorDefensor[posicaoDefensor];
+                                    cemiterioPlayer2[getProximaPosicaoCemiterio(vetorDefensorInimigo)] = vetorDefensor[posicaoDefensor];
                                     vetorDefensor[posicaoDefensor] = null;
                                 }
                             } else {

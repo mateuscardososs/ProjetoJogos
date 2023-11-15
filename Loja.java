@@ -76,4 +76,3 @@ public class Loja {
         return new Carta(nomeCartaAleatoria, nomeCartaAleatoria, nomeCartaAleatoria, nomeCartaAleatoria, 0, 0, 0, nomeCartaAleatoria, 0);
     }
     }
-}
