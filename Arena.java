@@ -162,7 +162,7 @@ public class Arena {
     }
 
     public void ataque(Carta[] vetorAtacante2, Carta[] vetorDefensor2) {
-        System.out.println("Turno de " + vetorAtacante2.getNome() + " - Ataque:");
+        System.out.println("Turno de " + vetorAtacante2.length + " - Ataque:");
 
         Carta[] vetorAtacante = vetorAtacante2.getCampo();
         Carta[] vetorDefensor = vetorDefensor2.getCampo();
