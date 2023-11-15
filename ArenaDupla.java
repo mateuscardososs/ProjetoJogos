@@ -4,7 +4,7 @@ public class ArenaDupla extends Arena {
     private Usuario aliado;
 
     public ArenaDupla(Usuario jogador1, Usuario jogador2, Usuario jogador3, Usuario jogador4, Deck modoDeJogo, Usuario aliado) {
-        super(new Usuario[] { jogador1, jogador2 }, new Usuario[] { jogador3, jogador4 }, modoDeJogo);
+        super(new Usuario[] { jogador1, jogador2 }, new Usuario[] { jogador3, jogador4 }, modoDeJogo, modoDeJogo);
         this.aliado = aliado;
     }
 
@@ -16,7 +16,7 @@ public class ArenaDupla extends Arena {
         Usuario jogadorAtual = (randomPlayer < 2) ? getTeam1()[randomPlayer] : getTeam2()[randomPlayer - 2];
 
         while (true) {
-            turno(jogadorAtual);
+            turno(jogadorAtual, cemiterioPlayer1);
 
             if (verificarFimPartida()) {
                 declararVencedor(jogadorAtual);
@@ -29,7 +29,6 @@ public class ArenaDupla extends Arena {
         }
     }
 
-    @Override
     public void saque() {
         System.out.println("Realizando o saque em dupla...");
 
@@ -43,18 +42,17 @@ public class ArenaDupla extends Arena {
 
         for (Usuario jogador : jogadores) {
             for (int i = 0; i < quantidade; i++) {
-                int deckSize = jogador.getDeck().getTamanho();
+                int deckSize = jogador.getDecks().length;
                 if (deckSize > 0) {
                     int randomIndex = rand.nextInt(deckSize);
-                    Carta carta = jogador.getDeck().getCarta(randomIndex);
+                    int carta = jogador.getDecks().length;
                     jogador.adicionarCartaMao(carta);
-                    jogador.getDeck().removerCarta(randomIndex);
+                    jogador.getDecks().length;
                 }
             }
         }
     }
 
-    // Sobrecarga do método turno
     public void turno(Usuario jogador, Carta[] vetorAliado) {
         System.out.println("Turno do jogador " + jogador.getNome());
 

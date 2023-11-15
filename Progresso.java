@@ -1,4 +1,3 @@
-// Progresso.java
 public abstract class Progresso {
     protected Premiacao[] premiacoes;
     protected int premiacaoAtual;

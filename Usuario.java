@@ -111,10 +111,11 @@ public class Usuario {
                 ", nivel=" + nivel +
                 ", decks=" + Arrays.toString(decks) +
                 ", pontos=" + pontos +
-                '}'';
-    }
+                '}';
+    
+    } 
 
-    public void adicionarCartaMao(Carta carta) {
+    public void adicionarCartaMao(int carta) {
     }
 
     public void aumentarManaMaxima(int i) {
@@ -170,5 +171,4 @@ public class Usuario {
 
     public int getIndex() {
         return 0;
-    }
-}
+    } 

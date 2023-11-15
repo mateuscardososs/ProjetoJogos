@@ -12,9 +12,9 @@ public class Arena {
     private int pontosVidaPlayer2;
     private Carta[] maoPlayer1;
     private Carta[] maoPlayer2;
-    private int manaMaximaPlayer1;
+    public int manaMaximaPlayer1;
     private int manaMaximaPlayer2;
-    private Carta[] cemiterioPlayer1;
+    protected Carta[] cemiterioPlayer1;
     private Carta[] cemiterioPlayer2;
     private Scanner scanner;
 
@@ -161,11 +161,11 @@ public class Arena {
         }
     }
 
-    public void ataque(Usuario jogadorAtacante, Usuario jogadorDefensor) {
-        System.out.println("Turno de " + jogadorAtacante.getNome() + " - Ataque:");
+    public void ataque(Carta[] vetorAtacante2, Carta[] vetorDefensor2) {
+        System.out.println("Turno de " + vetorAtacante2.getNome() + " - Ataque:");
 
-        Carta[] vetorAtacante = jogadorAtacante.getCampo();
-        Carta[] vetorDefensor = jogadorDefensor.getCampo();
+        Carta[] vetorAtacante = vetorAtacante2.getCampo();
+        Carta[] vetorDefensor = vetorDefensor2.getCampo();
 
         if (vetorAtacante != null && vetorAtacante.length > 0) {
             System.out.println("Você tem cartas no campo. Deseja atacar?");
@@ -178,7 +178,7 @@ public class Arena {
                 case 1:
                     for (int i = 0; i < vetorAtacante.length; i++) {
                         if (vetorAtacante[i] != null) {
-                            int posicaoDefensor = jogadorDefensor.escolherPosicaoCampo(); 
+                            int posicaoDefensor = vetorDefensor2.escolherPosicaoCampo(); 
 
                             if (posicaoDefensor >= 0 && posicaoDefensor < vetorDefensor.length && vetorDefensor[posicaoDefensor] != null) {
                                 // Realiza o ataque
@@ -189,12 +189,12 @@ public class Arena {
                                 vetorAtacante[i].sofrerDano(danoDefensor);
 
                                 if (vetorAtacante[i].getPontosVida() < 1) {
-                                    cemiterioPlayerAtacante[getProximaPosicaoCemiterio(jogadorAtacante)] = vetorAtacante[i];
+                                    cemiterioPlayerAtacante[getProximaPosicaoCemiterio(vetorAtacante2)] = vetorAtacante[i];
                                     vetorAtacante[i] = null;
                                 }
 
                                 if (vetorDefensor[posicaoDefensor].getPontosVida() < 1) {
-                                    cemiterioPlayerDefensor[getProximaPosicaoCemiterio(jogadorDefensor)] = vetorDefensor[posicaoDefensor];
+                                    cemiterioPlayerDefensor[getProximaPosicaoCemiterio(vetorDefensor2)] = vetorDefensor[posicaoDefensor];
                                     vetorDefensor[posicaoDefensor] = null;
                                 }
                             } else {
@@ -225,7 +225,7 @@ public class Arena {
         }
     }
 
-    private void declararVencedor(Usuario segundoJogador) {
+    protected void declararVencedor(Usuario segundoJogador) {
         Usuario vencedor;
         Usuario perdedor;
 

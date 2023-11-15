@@ -5,8 +5,12 @@ public interface Ativacoes {
 class Carta implements Ativacoes {
     private String habilidade;
 
-    public Carta(String habilidade) {
+    public Carta(String habilidade, String imagem, String tipo, String raridade, int i, int j, int custo, String habilidade2, int quantidade) {
         this.habilidade = habilidade;
+    }
+
+    public Carta(String nome, String imagem, String tipo, String raridade, int i, int j, int custo, String habilidade2,
+            int quantidade) {
     }
 
     @Override

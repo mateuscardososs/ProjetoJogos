@@ -70,9 +70,10 @@ public class Loja {
     }
 
     private Carta gerarCartaAleatoria() {
-        String[] nomesCartas = {"Carta1", "Carta2", "Carta3", "Carta4", "Carta5"};// Nomes hipotéticos para as cartas.
+        String[] nomesCartas = {"Carta1", "Carta2", "Carta3", "Carta4", "Carta5"};/
         Random random = new Random();
         String nomeCartaAleatoria = nomesCartas[random.nextInt(nomesCartas.length)];
-        return new Carta(nomeCartaAleatoria);
+        return new Carta(nomeCartaAleatoria, nomeCartaAleatoria, nomeCartaAleatoria, nomeCartaAleatoria, 0, 0, 0, nomeCartaAleatoria, 0);
+    }
     }
 }
