@@ -1,33 +1,27 @@
 public class PasseComum extends Progresso {
- 
+
+    private boolean passeFinalizado;
+
     public PasseComum() {
-        for (int i = 0; i < 60; i++) {
-            this.premiacoes[i] = new Premiacao("Booster Comum " + (i + 1));
+        super();
+        this.passeFinalizado = false;
+    }
+
+    @Override
+    public void registrarVitoria() {
+        if (!passeFinalizado) {
+            premiacaoAtual++;
         }
     }
 
     @Override
     public void entregarPremiacao() {
-        if (premiacaoAtual < premiacoes.length) {
-            System.out.println("Você ganhou um booster comum: " + premiacoes[premiacaoAtual].getNome());
-        } else {
-            System.out.println("O passe chegou ao fim. Não há mais premiações disponíveis.");
+        if (!passeFinalizado) {
+            System.out.println("Booster comum aberto.");
         }
     }
 
-    @Override
-    public void progresso() {
-        System.out.println("Ganhou uma vitória! Avançando no Passe Comum...");
-        premiacaoAtual++;
-        if (premiacaoAtual <= premiacoes.length) {
-            entregarPremiacao();
-        } else {
-            System.out.println("O passe chegou ao fim. Não há mais premiações disponíveis.");
-        }
-    }
-
-    // Método adicional específico do Passe Comum (se necessário)
-    public void metodoAdicional() {
-        System.out.println("Método adicional do Passe Comum.");
+    public void finalizarPasse() {
+        this.passeFinalizado = true;
     }
 }
