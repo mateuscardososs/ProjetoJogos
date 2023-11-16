@@ -11,7 +11,7 @@ public class Usuario {
     private String[] decks = new String[5];
     private double pontos = 0;
     public String length;
-}
+
     public Usuario(String nick, String cpf, String senha, int idade, String sexo, String email) {
         this.nick = nick;
         this.cpf = cpf;
@@ -173,3 +173,4 @@ public class Usuario {
     public int getIndex() {
         return 0;
     }
+}
