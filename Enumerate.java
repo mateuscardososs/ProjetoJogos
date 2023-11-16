@@ -5,7 +5,7 @@ public class Enumerate {
         UNIR,
         VOAR,
         INVISIBILIDADE,
-        LANCAR_FEITICO
+        FOGO
     }
 
     public enum RaridadeDasCartas {
