@@ -9,7 +9,7 @@ public class CartaUnique extends Carta {
 
     private void adicionarHabilidadeExtra() {
         
-        String[] habilidadesExtras = {"Habilidade1", "Habilidade2", "Habilidade3"};
+        String[] habilidadesExtras = {"VELOCIDADE,GELO,SUPERPULO,MAGIA"};
         Random random = new Random();
         int indiceHabilidadeExtra = random.nextInt(habilidadesExtras.length);
         String habilidadeExtra = habilidadesExtras[indiceHabilidadeExtra];
