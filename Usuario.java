@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Usuario {
@@ -117,6 +118,11 @@ public class Usuario {
     } 
 
     public void adicionarCartaMao(Carta carta) {
+        if (mao == null) {
+            mao = new ArrayList<>();
+        }
+
+        mao.add(carta);
     }
 
     public void aumentarManaMaxima(int i) {
@@ -172,5 +178,8 @@ public class Usuario {
 
     public int getIndex() {
         return 0;
+    }
+    
+    public void adicionarCartaMao() {
     }
 }

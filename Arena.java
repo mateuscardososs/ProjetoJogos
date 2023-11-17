@@ -161,11 +161,11 @@ public class Arena {
         }
     }
 
-    public void ataque(Carta[] vetorAtacanteAliado, Carta[] vetorDefensorInimigo) {
-        System.out.println("Turno de " + vetorAtacanteAliado.length + " - Ataque:");
+    public void ataque(Usuario jogadorAtual, Usuario jogadorDefensor) {
+        System.out.println("Turno de " + jogadorAtual.length + " - Ataque:");
 
-        Carta[] vetorAtacante = vetorAtacanteAliado.getCampo();
-        Carta[] vetorDefensor = vetorDefensorInimigo.getCampo();
+        Carta[] vetorAtacante = jogadorAtual.getCampo();
+        Carta[] vetorDefensor = jogadorDefensor.getCampo();
 
         if (vetorAtacante != null && vetorAtacante.length > 0) {
             System.out.println("Você tem cartas no campo. Deseja atacar?");
@@ -178,7 +178,7 @@ public class Arena {
                 case 1:
                     for (int i = 0; i < vetorAtacante.length; i++) {
                         if (vetorAtacante[i] != null) {
-                            int posicaoDefensor = vetorDefensorInimigo.escolherPosicaoCampo(); 
+                            int posicaoDefensor = jogadorDefensor.escolherPosicaoCampo(); 
 
                             if (posicaoDefensor >= 0 && posicaoDefensor < vetorDefensor.length && vetorDefensor[posicaoDefensor] != null) {
                                 // Realiza o ataque
@@ -189,12 +189,12 @@ public class Arena {
                                 vetorAtacante[i].sofrerDano(danoDefensor);
 
                                 if (vetorAtacante[i].getPontosVida() < 1) {
-                                    cemiterioPlayer1[getProximaPosicaoCemiterio(vetorAtacanteAliado)] = vetorAtacante[i];
+                                    cemiterioPlayer1[getProximaPosicaoCemiterio(jogadorAtual)] = vetorAtacante[i];
                                     vetorAtacante[i] = null;
                                 }
 
                                 if (vetorDefensor[posicaoDefensor].getPontosVida() < 1) {
-                                    cemiterioPlayer2[getProximaPosicaoCemiterio(vetorDefensorInimigo)] = vetorDefensor[posicaoDefensor];
+                                    cemiterioPlayer2[getProximaPosicaoCemiterio(jogadorDefensor)] = vetorDefensor[posicaoDefensor];
                                     vetorDefensor[posicaoDefensor] = null;
                                 }
                             } else {
@@ -285,6 +285,9 @@ public class Arena {
     
             System.exit(0);
         }
+    }
+
+    public void ataque(Carta[] vetorAtacante, Carta[] vetorDefensor) {
     }
     
 
