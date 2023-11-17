@@ -78,30 +78,55 @@ public class Arena {
         ataque(jogadorAtual, jogadorDefensor);
         fimDoTurno(jogadorAtual, jogadorDefensor);
     }
-
+    
     public void iniciarPartida() {
-        Random rand = new Random();
-        int randomPlayer = rand.nextInt(2); // 0 ou 1
-        Usuario primeiroJogador = randomPlayer == 0 ? Player1 : Player2;
-        Usuario segundoJogador = randomPlayer == 0 ? Player2 : Player1;
+    Random rand = new Random();
+    int randomPlayer = rand.nextInt(2); // 0 ou 1
+    Usuario primeiroJogador = randomPlayer == 0 ? Player1 : Player2;
+    Usuario segundoJogador = randomPlayer == 0 ? Player2 : Player1;
 
-        saque(primeiroJogador, 7);
-        saque(segundoJogador, 7);
+    saque(primeiroJogador, 7);
+    saque(segundoJogador, 7);
 
-        while (true) {
-            turno(primeiroJogador, segundoJogador);
-            if (verificarFimPartida()) {
-                declararVencedor(segundoJogador);
-                break;
-            }
+    long tempoLimiteMillis = System.currentTimeMillis() + 60000; // 60 segundos
+    boolean partidaEncontrada = false;
 
-            turno(segundoJogador, primeiroJogador);
-            if (verificarFimPartida()) {
-                declararVencedor(primeiroJogador);
-                break;
+    while (!partidaEncontrada && System.currentTimeMillis() < tempoLimiteMillis) {
+        if (false) {
+            partidaEncontrada = true;
+        } else {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
             }
         }
     }
+
+    if (!partidaEncontrada) {
+        try {
+            throw new TimeOutException("Não foi possível encontrar uma partida a tempo.");
+        } catch (TimeOutException e) {
+            System.out.println("Erro: " + e.getMessage());
+            return;
+        }
+    }
+
+    while (true) {
+        turno(primeiroJogador, segundoJogador);
+        if (verificarFimPartida()) {
+            declararVencedor(segundoJogador);
+            break;
+        }
+
+        turno(segundoJogador, primeiroJogador);
+        if (verificarFimPartida()) {
+            declararVencedor(primeiroJogador);
+            break;
+        }
+    }
+}
+
+
 
     public void compra(Usuario jogador) {
         int deckSize = jogador == Player1 ? deckPlayer1.getTamanho() : deckPlayer2.getTamanho();
