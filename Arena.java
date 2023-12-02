@@ -2,6 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Arena {
+   // Declaração de variáveis da classe
     private Usuario Player1;
     private Usuario Player2;
     private Deck deckPlayer1;
@@ -17,7 +18,7 @@ public class Arena {
     protected Carta[] cemiterioPlayer1;
     private Carta[] cemiterioPlayer2;
     private Scanner scanner;
-
+  // Construtor para inicializar o estado do jogo
     public Arena(Usuario[] team1, Usuario[] team2, Deck deckJogador1, Deck deckJogador2) {
         this.Player1 = team1[0];
         this.Player2 = team2[0];
@@ -38,17 +39,22 @@ public class Arena {
 
     public Arena(Usuario jogador, Usuario adversario, Deck modoDeJogo) {
     }
-
+  // Método para realizar a compra de cartas de um jogador
     public void saque(Usuario player, int quantidade) {
+  // Utilização de um gerador de números aleatórios para comprar cartas do deck
         Random rand = new Random();
         for (int i = 0; i < quantidade; i++) {
             int deckSize = player == Player1 ? deckPlayer1.getTamanho() : deckPlayer2.getTamanho();
+  // Verifica se há cartas para comprar no deck
             if (deckSize > 0) {
+  // Gera um índice aleatório para selecionar uma carta do deck
                 int randomIndex = rand.nextInt(deckSize);
+  // Obtém a carta selecionada
                 Carta carta = player == Player1 ? deckPlayer1.getCarta(randomIndex) : deckPlayer2.getCarta(randomIndex);
+  // Adiciona a carta comprada à mão do jogador
                 player.adicionarCartaMao(carta);
 
-                // Remover carta do deck
+  // Remove a carta comprada do deck
                 if (player == Player1) {
                     deckPlayer1.removerCarta(randomIndex);
                 } else {

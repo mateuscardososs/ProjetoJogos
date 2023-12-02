@@ -29,16 +29,17 @@ public class Carta {
             }
         }
 
-        public void jogarCartaMana() {
+        public Carta jogarCartaMana() {
             for (int i = 0; i < mao.length; i++) {
-                if (mao[i] != null && mao[i].getTipo() == TipoCarta.MANA) {
+                if (mao[i] != null && mao[i].getTipo().equalsIgnoreCase("Mana")) {
                     Carta cartaMana = mao[i];
-                    mao[i] = null; 
-                    return cartaMana; 
+                    mao[i] = null;
+                    return cartaMana;
                 }
             }
-            return null;
+            return null; 
         }
+        
         
     }
 
