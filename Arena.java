@@ -63,7 +63,7 @@ public class Arena {
             }
         }
     }
-
+ // Método para executar o turno de um jogador
     public void turno(Usuario jogadorAtual, Usuario jogadorDefensor) {
         System.out.println("Turno do jogador " + jogadorAtual.getNome());
 
@@ -84,7 +84,7 @@ public class Arena {
         ataque(jogadorAtual, jogadorDefensor);
         fimDoTurno(jogadorAtual, jogadorDefensor);
     }
-    
+  // Método para iniciar o jogo 
     public void iniciarPartida() {
     Random rand = new Random();
     int randomPlayer = rand.nextInt(2); // 0 ou 1
@@ -133,7 +133,7 @@ public class Arena {
 }
 
 
-
+ // Método para comprar uma carta durante o turno de um jogador
     public void compra(Usuario jogador) {
         int deckSize = jogador == Player1 ? deckPlayer1.getTamanho() : deckPlayer2.getTamanho();
 
@@ -157,7 +157,7 @@ public class Arena {
             System.out.println("O deck de " + jogador.getNome() + " está vazio. Não é possível comprar cartas.");
         }
     }
-
+ // Método para posicionar cartas durante o turno de um jogador
     public void posicionamento(Usuario jogador) {
         System.out.println("Turno de " + jogador.getNome() + " - Posicionamento:");
 
@@ -191,7 +191,7 @@ public class Arena {
                 break;
         }
     }
-
+ // Método para lidar com ataques durante o turno de um jogador
     public void ataque(Usuario jogadorAtual, Usuario jogadorDefensor) {
         System.out.println("Turno de " + jogadorAtual.length + " - Ataque:");
 
@@ -245,7 +245,7 @@ public class Arena {
             System.out.println("Você não tem cartas no campo. Nenhum ataque realizado.");
         }
     }
-
+ // Método para o fim do turno de um jogador
     public void fimDoTurno(Usuario jogadorAtual, Usuario jogadorDefensor) {
         System.out.println("Fim do turno de " + jogadorAtual.getNome());
 
@@ -255,7 +255,7 @@ public class Arena {
             proximoTurno(jogadorDefensor, jogadorAtual);
         }
     }
-
+ // Método protegido para declarar o vencedor e lidar com as recompensas
     protected void declararVencedor(Usuario segundoJogador) {
         Usuario vencedor;
         Usuario perdedor;
@@ -278,11 +278,11 @@ public class Arena {
         System.out.println(vencedor.getNome() + " recebeu " + cardCoinsVencedor + " Card Coins.");
         System.out.println(perdedor.getNome() + " recebeu " + cardCoinsPerdedor + " Card Coins.");
     }
-
+ // Método para lidar com o próximo turno
     private void proximoTurno(Usuario jogadorAtual, Usuario jogadorDefensor) {
         turno(jogadorDefensor, jogadorAtual);
     }
-
+ // Método para obter a próxima posição disponível no cemitério do jogador
     private int getProximaPosicaoCemiterio(Usuario jogador) {
         Carta[] cemiterio = (jogador == Player1) ? cemiterioPlayer1 : cemiterioPlayer2;
 
@@ -294,11 +294,11 @@ public class Arena {
 
         return -1; 
     }
-    
+ // Método para verificar se o jogo chegou ao fim  
     public boolean verificarFimPartida() {
         return pontosVidaPlayer1 < 1 || pontosVidaPlayer2 < 1;
     }
-    
+ // Método para lidar com o fim do jogo   
     public void fimDaPartida() {
         if (verificarFimPartida()) {
             Usuario vencedor = (pontosVidaPlayer1 < 1) ? Player2 : Player1;
@@ -317,7 +317,7 @@ public class Arena {
             System.exit(0);
         }
     }
-
+  // Método de espaço reservado para lidar com ataques (não totalmente implementado)
     public void ataque(Carta[] vetorAtacante, Carta[] vetorDefensor) {
     }
     

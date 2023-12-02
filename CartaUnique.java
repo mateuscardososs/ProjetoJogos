@@ -15,4 +15,11 @@ public class CartaUnique extends Carta {
         String habilidadeExtra = habilidadesExtras[indiceHabilidadeExtra];
         setHabilidade(getHabilidade() + ", " + habilidadeExtra);
     }
+
+    private void setHabilidade(String string) {
+    }
+
+    private String getHabilidade() {
+        return null;
+    }
 }
