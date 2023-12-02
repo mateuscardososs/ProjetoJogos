@@ -1,4 +1,5 @@
 public class Carta {
+    // Propriedades da classe Carta
     private String nome;
     private String imagem;
     private String tipo;
@@ -9,6 +10,7 @@ public class Carta {
     private String habilidade;
     private int quantidade;
 
+    // Construtor para inicializar as propriedades
     public Carta(String nome, String imagem, String tipo, String raridade, int ataque, int defesa, int custo, String habilidade, int quantidade) {
         this.nome = nome;
         this.imagem = imagem;
@@ -19,30 +21,34 @@ public class Carta {
         this.custo = custo;
         this.habilidade = habilidade;
         
+        // Tratando a quantidade com base no tipo de carta
         if (tipo.equalsIgnoreCase("Mana")) {
             this.quantidade = quantidade;
         } else {
+            // Restringindo a quantidade para 3 para cartas que não são de Mana
             if (quantidade <= 3) {
                 this.quantidade = quantidade;
             } else {
                 this.quantidade = 3;
             }
         }
-
-        public Carta jogarCartaMana() {
-            for (int i = 0; i < mao.length; i++) {
-                if (mao[i] != null && mao[i].getTipo().equalsIgnoreCase("Mana")) {
-                    Carta cartaMana = mao[i];
-                    mao[i] = null;
-                    return cartaMana;
-                }
-            }
-            return null; 
-        }
-        
-        
     }
 
+    // Método para jogar uma carta de Mana da mão
+    public Carta jogarCartaMana() {
+        // Supondo que haja um array 'mao' representando a mão de cartas
+        for (int i = 0; i < mao.length; i++) {
+            // Verificando se a carta não é nula e é uma carta de Mana
+            if (mao[i] != null && mao[i].getTipo().equalsIgnoreCase("Mana")) {
+                Carta cartaMana = mao[i];
+                mao[i] = null; // Removendo a carta de Mana jogada da mão
+                return cartaMana; // Retornando a carta de Mana jogada
+            }
+        }
+        return null; // Retornando nulo se nenhuma carta de Mana for encontrada na mão
+    }
+    
+    // Métodos de obtenção (get) para as propriedades
     public String getNome() {
         return nome;
     }
@@ -79,7 +85,7 @@ public class Carta {
         return quantidade;
     }
 
-    ////////////////////
+    // Métodos de configuração (set) para as propriedades
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -116,6 +122,7 @@ public class Carta {
         this.quantidade = quantidade;
     }
 
+    // Métodos de espaço reservado com valores de retorno e sem lógica real
     public Object getCustoMana() {
         return null;
     }
@@ -125,6 +132,7 @@ public class Carta {
     }
 
     public void sofrerDano(int danoDefensor) {
+       
         return null;
     }
 
@@ -133,7 +141,7 @@ public class Carta {
     }
 
     public void sofrerDano(int danoAtacante) {
+       
         return null;
     }
-
 }
