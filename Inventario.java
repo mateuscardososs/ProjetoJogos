@@ -1,13 +1,15 @@
 public class Inventario {
+    // Atributos da classe Inventario
     private Carta[] cartas;
     private int nivelAtual;
     private int cardcoins;
-
+    // Construtor
     public Inventario() {
         this.cartas = new Carta[200];
         this.nivelAtual = 1;
         this.cardcoins = 0;
     }
+    // Métodos getters e setters
 
     public Carta[] getCartas() {
         return cartas;
@@ -32,7 +34,7 @@ public class Inventario {
     public void setCardcoins(int cardcoins) {
         this.cardcoins = cardcoins;
     }
-
+    // Adiciona uma carta ao inventário
     public void adicionarCarta(Carta carta) {
         // Verifica se o inventário já está cheio
         if (cartas.length >= 200) {
@@ -40,6 +42,7 @@ public class Inventario {
             return;
         }
         for (int i = 0; i < cartas.length; i++) {
+            // Encontra a primeira posição nula e adiciona a carta
             if (cartas[i] == null) {
                 cartas[i] = carta;
                 System.out.println("Carta adicionada ao inventário: " + carta.getNome());
