@@ -2,12 +2,13 @@ import java.util.Random;
 
 public class ArenaDupla extends Arena {
     private Usuario aliado;
-
+       // Construtor
     public ArenaDupla(Usuario jogador1, Usuario jogador2, Usuario jogador3, Usuario jogador4, Deck modoDeJogo, Usuario aliado) {
         super(new Usuario[] { jogador1, jogador2 }, new Usuario[] { jogador3, jogador4 }, modoDeJogo, modoDeJogo);
         this.aliado = aliado;
     }
-
+    
+    // Iniciar partida
     @Override
     public void iniciarPartida() {
         System.out.println("Iniciando partida em dupla");
@@ -28,7 +29,7 @@ public class ArenaDupla extends Arena {
             jogadorAtual = (randomPlayer < 2) ? getTeam1()[randomPlayer] : getTeam2()[randomPlayer - 2];
         }
     }
-
+    // Realizar saque
     public void saque() {
         System.out.println("Realizando o saque em dupla...");
 
@@ -52,7 +53,7 @@ public class ArenaDupla extends Arena {
             }
         }
     }
-
+      // Realizar turno do jogador
     public void turno(Usuario jogador, Carta[] vetorAliado) {
         System.out.println("Turno do jogador " + jogador.getNome());
 
@@ -84,7 +85,7 @@ public class ArenaDupla extends Arena {
 
         ataque(vetorAtacanteAliado, vetorDefensorInimigo);
     }
-
+       // Métodos privados para obter equipes
     private Usuario[] getTeam1() {
         Usuario[] equipe1 = new Usuario[2]; 
 
