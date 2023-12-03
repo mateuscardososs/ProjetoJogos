@@ -1,16 +1,17 @@
 import java.util.Random;
-
+// Atributos
 public class Lobby {
     private Usuario[] players;
     private int numPlayers;
     private int maxPlayers;
 
+     // Construtor
     public Lobby(int maxJogadores) {
         maxPlayers = maxJogadores;
         players = new Usuario[maxPlayers];
         numPlayers = 0;
     }
-
+    // Métodos getters
     public Usuario[] getPlayers() {
         return players;
     }
@@ -18,7 +19,7 @@ public class Lobby {
     public int getNumPlayers() {
         return numPlayers;
     }
-
+     // Adiciona um jogador ao lobby
     public void adicionarjogador(Usuario jogador) {
         if (numPlayers < maxPlayers) {
             players[numPlayers] = jogador;
@@ -27,7 +28,7 @@ public class Lobby {
             System.out.println("Lobby está cheio.");
         }
     }
-
+    // Remove um jogador do lobby
     public void removerJogador(Usuario jogador) {
         for (int i = 0; i < numPlayers; i++) {
             if (players[i].equals(jogador)) {
@@ -39,7 +40,7 @@ public class Lobby {
             }
         }
     }
-
+   // Encontra uma partida para um jogador
     public void encontrarPartida(Usuario jogador) {
         if (numPlayers >= 2) {
             Random rand = new Random();
@@ -64,7 +65,7 @@ public class Lobby {
             System.out.println("Não há jogadores suficientes para iniciar uma partida.");
         }
     }
-    
+    // Encontra uma partida em dupla
     public void encontrarPartidaDupla() {
         if (numPlayers < 4) {
             System.out.println("Não há jogadores suficientes para iniciar uma partida em dupla.");
@@ -89,7 +90,7 @@ public class Lobby {
             removerJogador(player);
         }
     }
-    
+    // Seleciona jogadores aleatórios para formar uma equipe
     public Usuario[] selecionarJogadoresAleatorios(int count, Random rand) {
         Usuario[] selectedPlayers = new Usuario[count];
     
@@ -104,7 +105,7 @@ public class Lobby {
     
         return selectedPlayers;
     }
-    
+    // Verifica se um jogador já foi selecionado
     public boolean contemJogadorSelecionado(Usuario[] selectedPlayers, int index) {
         for (Usuario player : selectedPlayers) {
             if (player != null && player.getIndex() == index) {
