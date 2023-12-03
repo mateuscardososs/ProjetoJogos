@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-
+// Atributos
 public class Usuario {
     private String nick;
     private String cpf;
@@ -12,7 +12,7 @@ public class Usuario {
     private String[] decks = new String[5];
     private double pontos = 0;
     public String length;
-
+   // Construtores
     public Usuario(String nick, String cpf, String senha, int idade, String sexo, String email) {
         this.nick = nick;
         this.cpf = cpf;
