@@ -1,16 +1,17 @@
 import java.util.Random;
 
 public class Loja {
+    // Atributos
     private String numeroCartao;
     private String codigoVerificador;
     private boolean promocao;
-
+    // Construtor
     public Loja(String numeroCartao, String codigoVerificador, boolean promocao) {
         this.numeroCartao = numeroCartao;
         this.codigoVerificador = codigoVerificador;
         this.promocao = promocao;
     }
-
+    // Método para realizar a compra de um booster
     public void compraBooster(Inventario inventario) {
         try {
             if (promocao) {
@@ -22,7 +23,7 @@ public class Loja {
             System.out.println("Erro ao comprar booster: " + e.getMessage());
         }
     }
-
+     // Método para realizar a compra de um booster padrão
     private void compraBooster(Inventario inventario) throws InsuficientCoinException {
         int custoBooster = 120;
 
@@ -33,7 +34,7 @@ public class Loja {
             throw new InsuficientCoinException("Saldo insuficiente de cardcoins para o Booster.");
         }
     }
-
+    // Método para realizar a compra de um booster especial
     private void compraBoosterEspecial(Inventario inventario) throws InsuficientCoinException {
         int custoBoosterEspecial = 150;
 
@@ -55,7 +56,7 @@ public class Loja {
             throw new InsuficientCoinException("Saldo insuficiente de cardcoins para o Booster especial.");
         }
     }
-
+     // Método para adicionar cartas aleatórias ao inventário
     private void adicionarCartasAleatoriasAoInventario(Inventario inventario) {
         Random random = new Random();
         int quantidadeCartasNoBooster = 12;
@@ -72,7 +73,7 @@ public class Loja {
             }
         }
     }
-
+     // Método para gerar uma carta aleatória
     private Carta gerarCartaAleatoria() {
         String[] nomesCartas = {"Carta1", "Carta2", "Carta3", "Carta4", "Carta5"};
         Random random = new Random();
