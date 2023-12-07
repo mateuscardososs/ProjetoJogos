@@ -52,11 +52,28 @@ public class Inventario {
 
         System.out.println("O inventário está cheio.");
     }
-
+    // Método para remover carta
     public void removerCarta(Carta carta) {
+        for (int i = 0; i < cartas.length; i++) {
+            if (cartas[i] != null && cartas[i].equals(carta)) {
+                cartas[i] = null;
+                System.out.println("Carta removida do inventário: " + carta.getNome());
+                return;
+            }
+        }
+
+        System.out.println("Carta não encontrada no inventário.");
     }
 
+    // Método para contar quantas cartas de um tipo específico existem no inventário
     public int contagemCarta(Carta cartaAleatoria) {
-        return 0;
+        int contagem = 0;
+        for (Carta carta : cartas) {
+            if (carta != null && carta.equals(cartaAleatoria)) {
+                contagem++;
+            }
+        }
+        return contagem;
     }
+
 }
